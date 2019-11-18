@@ -1,4 +1,4 @@
-// Initialize Express as function handler for HTTP server
+// Init Express as function handler for HTTP server
 var express = require('express');
 var app = express();
 
@@ -22,10 +22,8 @@ app.get('/', (req, res) => {
 
 
 //Dronestream creates its own server and listens
-require("dronestream").listen(3001, function() {
-	console.log('Listening on *:3001');
-});
-
+require("dronestream").listen(3001);
+console.log('Listening on *:3001 for Video Stream ');
 
 //Controller
 require("./drone/controller");
@@ -33,7 +31,7 @@ require("./drone/controller");
 
 //Make the http server listen on port 3000
 http.listen(3000, function(){
-	console.log('listening on *:3000');
+	console.log('Listening on *:3000');
 });
 
 

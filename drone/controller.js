@@ -11,19 +11,24 @@ var http2 = require('http').createServer(app2);
 var io2 = require('socket.io')(http2);
 
 http2.listen(3002, function(){
-    console.log('Listening on *:3002');
+    console.log('Listening on *:3002 for Controller Feed ');
 });
 
+// Connection listener
 io2.on('connection', function (socket) {
     var arDrone = require('ar-drone');
     var client = arDrone.createClient();
+    client.config('general:navdata_demo', 'FALSE');
 
-    setInterval(function(){
-        var batteryLevel = client.battery();
-        socket.emit('event', { name: 'battery',value: batteryLevel});
+    // Emit Realtime UI Updates from client (battery, connection status, flying status, etc.)
+    setInterval(() =>  {
+        client.on('navdata', (data) => {
+            socket.emit('navdata', data);
+        });
     }, 5000);
 
-    socket.on('event', function (data) {
+    // Listen for commands from client
+    socket.on('command', function (data) {
         if(data.name=="takeoff"){
             console.log("Takeoff Command Sent");
             client.takeoff();
@@ -41,6 +46,11 @@ io2.on('connection', function (socket) {
             client.land();
         }
     });
+
+	//log disconnections to console
+	socket.on('disconnect', () => {
+		console.log('user disconnected');
+	});
 });
 
 module.exports

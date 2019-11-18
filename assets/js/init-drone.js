@@ -7,42 +7,57 @@ $(function () {
     }
 
     // Drone Controls
-    function startController(){
+    function startController() {
         var socket = io.connect('http://localhost:3002');
-        socket.on('connect', function () {
-            // var status = document.getElementById('status');
-            // $('#status').text('Connected');
-            // $('#status').css('color', 'green');
+        socket.on('connect', () => {
 
-            // Remaining Battery Power
-            socket.on('event', function (data) {
-                if(data.name=="battery"){
-                    $("#battery-indicator").css('width',data.value+'%');
-                    $("#battery-value").html(data.value+'%');
+            // listen for navdata, update UI with data
+            socket.on('navdata', (data) => {
+
+                // Connection Indicator - (Automatic upon recieving navdata)
+                var status = $('#status');
+                status.text('Connected');
+                status.css('color', 'green');
+
+                // UI Battery Indicator
+                var battery = data.demo.batteryPercentage;
+                var batteryIndicator = $('#battery');
+                batteryIndicator.text(battery + '%');
+                if (battery < 50) {
+                    battery.css('color', 'red');
+                };
+
+                // 'Flying' Status Indicator
+                var flying = data.droneState.flying;
+                var flyingIndicator = $('#flying');
+                if (flying === 1) {
+                    flyingIndicator.text('Airborne');
+                } else {
+                    flyingIndicator.text('Landed');
                 }
+
             });
 
             // Command Click Listeners
-            $("#takeoff").click(function(){
+            $("#takeoff").click(() => {
                 console.log("Sending Takeoff Command");
-                socket.emit('event', {name:"takeoff"});
+                socket.emit('command', {name:"takeoff"});
             });
 
-            $("#spin").click(function(){
+            $("#spin").click(() => {
                 console.log("Sending Spin Command");
-                socket.emit('event', {name:"spin"});
+                socket.emit('command', {name:"spin"});
             });
 
-            $("#stop").click(function(){
+            $("#stop").click(() => {
                 console.log("Sending Stop Command");
-                socket.emit('event', {name:"stop"});
+                socket.emit('command', {name:"stop"});
             });
 
-            $("#land").click(function(){
+            $("#land").click(() => {
                 console.log("Sending Land Command");
-                socket.emit('event', {name:"land"});
+                socket.emit('command', {name:"land"});
             });
-
         });
     }
     // Init Page
