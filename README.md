@@ -27,10 +27,9 @@ Available Data Includes:
  * Battery
  * Flight Status
  * Front-Facing Video Feed
-
+ * See ar-drone docs for more data: [a link](https://github.com/felixge/node-ar-drone) 
 
 Improvements to be Made:
  * Facial Recognition and "Follow-Me" Mechanic
  * Facial Authentication
  * Voice Commands
- * Native Application
