@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+  <head>
+    <title>Control Panel</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <script src="assets/js/nodecopter-client.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/init-drone.js"></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar fixed-top navbar-dark bg-dark">
+          <span class="navbar-brand mx-auto">Connection Status: <span id="status">Disconnected</span></span>
+      </nav>
+  </header>
+  <!--/ Navbar -->
+
+  <div class="fixed-top">
+
+      <!-- Video Stream and Command Pallete -->
+      <main class="container-fluid mt-5 pt-2">
+          <div class="row border border-dark">
+
+              <!-- Video Stream -->
+              <div class="col-7 py-2 border-right border-dark">
+                  <div class="container pr-0">
+                      <h3 class="pt-2">Front Camera Feed</h3>
+                      <div id="stream"></div>
+                  </div>
+              </div>
+
+              <!-- Command Pallete -->
+              <div class="d-none d-md-block col-md-5 py-3">
+                  <div class="text-center">
+                      <h3 class="mb-0">Command Pallete</h3>
+
+                      <!-- Command Buttons -->
+                      <div class="mt-3">
+                          <button id="takeoff" class="btn btn-md btn-outline-success btn-block">Take Off</button>
+                          <br>
+                          <button id="spin" class="btn btn-md btn-outline-primary btn-block">Start Spinning</button>
+                          <br>
+                          <button id="stop" class="btn btn-md btn-outline-danger btn-block">Stop & Hover</button>
+                          <br>
+                          <button id="search" class="btn btn-md btn-outline-warning btn-block">Search</button>
+                          <br>
+                          <button id="land" class="btn btn-md btn-outline-info btn-block">Land</button>
+                          <br>
+                          <button id="mode" class="btn btn-md btn-outline-dark btn-block">Switch Mode</button>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </main>
+      <!--/ Video Stream and Command Pallete -->
+
+
+      <!-- Flight Data -->
+      <footer class="container-fluid mt-0">
+
+          <!-- Bottom Row -->
+          <div class="row border border-dark border-top-0">
+
+              <!-- Status Column -->
+              <div class="col-2 border-right border-dark">
+                  <h4 class="pt-2 mb-2">Status</h4>
+                  <p class="lead mb-1">Flying: <span id="flying">True</span></p>
+                  <p class="lead mb-1">Battery: <span id="battery">89%</span></p>
+                  <p class="lead mb-2 ">Mode: <span id="battery">Manual</span></p>
+              </div>
+
+              <!-- Altitude -->
+              <div class="col-3 border-right border-dark">
+                  <canvas id="altitude" height="300"></canvas>
+              </div>
+
+              <!-- Velocity -->
+              <!-- <div class="col-3 border-right border-dark">
+                  <span id="airspeed"></span>
+              </div> -->
+
+          </div>
+          <!--/ Bottom Row -->
+
+      </footer>
+      <!--/ Flight Data -->
+
+  </div>
+  </body>
+
+</html>
