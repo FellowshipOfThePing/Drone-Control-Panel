@@ -1,15 +1,16 @@
 //Controller server - SERVER SIDE
 
-//New express app for controller
+// New express app for controller
 var express = require('express');
 var app2 = express();
 
-// new server
+// New server
 var http2 = require('http').createServer(app2);
 
-//Init socket.io with HTTP server
+// Init socket.io with HTTP server
 var io2 = require('socket.io')(http2);
 
+// Listen for Controller Feed
 http2.listen(3002, function(){
     console.log('Listening on *:3002 for Controller Feed ');
 });
@@ -20,12 +21,12 @@ io2.on('connection', function (socket) {
     var client = arDrone.createClient();
     client.config('general:navdata_demo', 'FALSE');
 
-    // Emit Realtime UI Updates from client (battery, connection status, flying status, etc.)
+    // Emit Realtime UI Updates from drone.client (battery %, connection status, flying status, etc.)
     setInterval(() =>  {
         client.on('navdata', (data) => {
             socket.emit('navdata', data);
         });
-    }, 5000);
+    }, 15000);
 
     // Listen for commands from client
     socket.on('command', function (data) {
@@ -47,9 +48,9 @@ io2.on('connection', function (socket) {
         }
     });
 
-	//log disconnections to console
+	// Log disconnections to console
 	socket.on('disconnect', () => {
-		console.log('user disconnected');
+		console.log('User disconnected from controller');
 	});
 });
 

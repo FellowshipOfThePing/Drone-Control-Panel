@@ -17,7 +17,7 @@ console.log(client);
 // pngStream.on('data', console.log);
 
 client.on('navdata', (data) => {
-	console.log(data.demo.batteryPercentage);
+	console.log(data.droneState);
 });
 
 

@@ -9,7 +9,6 @@
     <script src="assets/js/nodecopter-client.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/init-drone.js"></script>
   </head>
 
   <body>
@@ -48,11 +47,11 @@
                           <br>
                           <button id="stop" class="btn btn-md btn-outline-danger btn-block">Stop & Hover</button>
                           <br>
-                          <button id="search" class="btn btn-md btn-outline-warning btn-block">Search</button>
-                          <br>
                           <button id="land" class="btn btn-md btn-outline-info btn-block">Land</button>
                           <br>
-                          <button id="mode" class="btn btn-md btn-outline-dark btn-block">Switch Mode</button>
+                          <button id="search" class="btn btn-md btn-outline-warning btn-block">Search</button>
+                          <br>
+                          <button id="mode" class="btn btn-md btn-outline-dark btn-block">Toggle Emergency Mode</button>
                       </div>
                   </div>
               </div>
@@ -69,30 +68,48 @@
           <div class="row border border-dark border-top-0">
 
               <!-- Status Column -->
-              <div class="col-2 border-right border-dark">
-                  <h4 class="pt-2 mb-2">Status</h4>
-                  <p class="lead mb-1">Flight Status: <span id="flying">Loading...</span></p>
-                  <p class="lead mb-1">Battery: <span id="battery">Loading...</span></p>
-                  <p class="lead mb-2 ">Mode: <span id="modeStatus">X</span></p>
+              <div class="col-3 border-right border-dark">
+                  <h4 class="pt-2 mb-3">Status</h4>
+                  <p class="lead mb-2">Flight Status: <span id="flying">Loading...</span></p>
+                  <p class="lead mb-2">Battery: <span id="battery">Loading...</span></p>
+                  <p class="lead mb-2 ">Emegency Mode: <span id="modeStatus">X</span></p>
               </div>
 
               <!-- Altitude -->
-              <div class="col-3 border-right border-dark">
-                  <canvas id="altitude" height="300"></canvas>
+              <div class="col-3 border-right border-dark meter">
+                <h4 class="pt-2 mb-2">Altitude </h4>
+                <div class="d-flex justify-content-center align-items-center">
+                    <h1 id="altitude" class="display-2 pt-3">...</h1><span class="lead pl-3">Meters</span>
+                </div>
               </div>
 
-              <!-- Velocity -->
-              <!-- <div class="col-3 border-right border-dark">
-                  <span id="airspeed"></span>
-              </div> -->
+              <!-- Airspeed -->
+              <div class="col-3 border-right border-dark meter">
+                <h4 class="pt-2 mb-2">Airspeed</h4>
+                <div class="d-flex justify-content-center align-items-center">
+                    <h1 id="airspeed" class="display-2 pt-3">...</h1><span class="lead pl-3">Units?</span>
+                </div>
+              </div>
+
+              <!-- Errors -->
+              <div class="col-3 border-right border-dark meter">
+                <h4 class="pt-2 mb-2">Errors</h4>
+                <div>
+                    <ul id="errors"></ul>
+                </div>
+              </div>
 
           </div>
-          <!--/ Bottom Row -->
+          <!--/ Bottom Row --> 
 
       </footer>
       <!--/ Flight Data -->
 
   </div>
+  <script src="assets/js/chart.js/dist/Chart.bundle.min.js"></script>
+  <script src="assets/js/init-drone.js"></script>
+
+    <!-- <script src="assets/js/stats.js"></script> -->
   </body>
 
 </html>
