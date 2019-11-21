@@ -9,17 +9,17 @@ Building off of the following repositories (with slight modifications):
  * [socket.io](https://github.com/socketio/socket.io)
 
 
-Built using the following tools:
- * [React.js](https://reactjs.org/docs/getting-started.html)
+Built using:
  * [Node.js](https://nodejs.org/en/docs/)
  * [Express.js](https://expressjs.com/en/4x/api.html)
- * [Chart.js](https://www.chartjs.org/docs/latest/)
 
 
 Available Commands Include:
  * Takeoff
  * Land
  * Spin
+ * Stop & Hover
+ * Toggle Emergency Mode
 
 
 Available Data Includes:
@@ -29,7 +29,8 @@ Available Data Includes:
  * Front-Facing Video Feed
  * See ar-drone [docs](https://github.com/felixge/node-ar-drone/blob/master/docs/NavData.md) for more data options.
 
-Improvements to be Made:
+Possible Improvements to be Made:
  * Facial Recognition and "Follow-Me" Mechanic
  * Facial Authentication
  * Voice Commands
+ * Rebuild UI with React (Just for the heck of it?)
