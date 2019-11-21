@@ -108,3 +108,4 @@ dist
 # Other
 .DS_Store
 notes.txt
+./assets/js/stats.js

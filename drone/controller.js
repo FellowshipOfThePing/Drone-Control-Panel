@@ -1,10 +1,10 @@
 //Controller server - SERVER SIDE
 
-// New express app for controller
+// Init new express app for controller
 var express = require('express');
 var app2 = express();
 
-// New server
+// Init new HTTP server
 var http2 = require('http').createServer(app2);
 
 // Init socket.io with HTTP server
@@ -54,4 +54,4 @@ io2.on('connection', function (socket) {
 	});
 });
 
-module.exports
+// module.exports

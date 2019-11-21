@@ -20,6 +20,7 @@
   </header>
   <!--/ Navbar -->
 
+  <!-- UI Body -->
   <div class="fixed-top">
 
       <!-- Video Stream and Command Pallete -->
@@ -51,7 +52,7 @@
                           <br>
                           <button id="search" class="btn btn-md btn-outline-warning btn-block">Search</button>
                           <br>
-                          <button id="mode" class="btn btn-md btn-outline-dark btn-block">Toggle Emergency Mode</button>
+                          <button id="modeToggle" class="btn btn-md btn-outline-dark btn-block">Toggle Emergency Mode</button>
                       </div>
                   </div>
               </div>
@@ -72,7 +73,7 @@
                   <h4 class="pt-2 mb-3">Status</h4>
                   <p class="lead mb-2">Flight Status: <span id="flying">Loading...</span></p>
                   <p class="lead mb-2">Battery: <span id="battery">Loading...</span></p>
-                  <p class="lead mb-2 ">Emegency Mode: <span id="modeStatus">X</span></p>
+                  <p class="lead mb-2 ">Emegency Mode: <span id="modeStatus">Enabled</span></p>
               </div>
 
               <!-- Altitude -->
@@ -87,7 +88,7 @@
               <div class="col-3 border-right border-dark meter">
                 <h4 class="pt-2 mb-2">Airspeed</h4>
                 <div class="d-flex justify-content-center align-items-center">
-                    <h1 id="airspeed" class="display-2 pt-3">...</h1><span class="lead pl-3">Units?</span>
+                    <h1 id="airspeed" class="display-2 pt-3">...</h1><span class="lead pl-3">m/s</span>
                 </div>
               </div>
 
@@ -95,7 +96,11 @@
               <div class="col-3 border-right border-dark meter">
                 <h4 class="pt-2 mb-2">Errors</h4>
                 <div>
-                    <ul id="errors"></ul>
+                    <ul id="errors">
+                        <!-- Placeholder Errors -->
+                        <li class="lead">Magnometer Needs Calibration</li>
+                        <li class="lead">Too Much Wind</li>
+                    </ul>
                 </div>
               </div>
 
@@ -106,10 +111,9 @@
       <!--/ Flight Data -->
 
   </div>
-  <script src="assets/js/chart.js/dist/Chart.bundle.min.js"></script>
-  <script src="assets/js/init-drone.js"></script>
+  <!--/ UI Body -->
 
-    <!-- <script src="assets/js/stats.js"></script> -->
+  <script src="assets/js/init-drone.js"></script>
   </body>
 
 </html>

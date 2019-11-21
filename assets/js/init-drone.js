@@ -6,7 +6,7 @@ $(function () {
         new NodecopterStream(document.getElementById("stream"), {port: 3001});
     }
 
-    // Drone Controls
+    // Drone Controls/Nav Data
     function startController() {
         var socket = io.connect('http://localhost:3002');
         socket.on('connect', () => {
@@ -25,20 +25,24 @@ $(function () {
             // Listen for navdata, update UI with data
             socket.on('navdata', (data) => {
 
+                var state = data.droneState;
+                var demo = data.demo;
+
+                // Connection Status Indicator
                 if (data_loops === 0) {
                     status.text('Connected');
                     status.css('color', 'green');
                 }
 
                 // Update Battery Indicator
-                var battery = data.demo.batteryPercentage;
+                var battery = demo.batteryPercentage;
                 batteryIndicator.text(battery + '%');
                 if (battery < 50) {
                     batteryIndicator.css('color', 'red');
                 }
 
                 // Update 'Flying' Status Indicator
-                var flying = data.droneState.flying;
+                var flying = state.flying;
 
                 if (flying === 1) {
                     flyingIndicator.text('Airborne');
@@ -47,16 +51,16 @@ $(function () {
                 }
 
                 // Update Altitude Meter
-                var altitude = data.demo.altitude;
+                var altitude = demo.altitude;
                 altitudeIndicator.text(altitude);
 
                 // Update Airspeed Meter
-                var airspeed = data.demo.zVelocity;
+                var airspeed = Math.floor(demo.xVelocity);
                 airspeedIndicator.text(airspeed);
 
                 // Update Errors Monitor
                 errorsIndicator.empty();
-                var state = data.droneState;
+                
                 var errorsDict = {
                     // "Vision Enabled": state.visionEnabled, //TEMP for testing UI
                     // "Camera Ready": state.cameraReady, //TEMP for testing UI
