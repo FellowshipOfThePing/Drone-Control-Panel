@@ -3,10 +3,12 @@ AR-Drone Control Panel
 
 A browser-based control panel application for the Parrot AR Drone 2.0.
 
-### Screenshot of UI (Gif to be added soon) ###
+### Demonstration ###
 
-![UI_View](https://github.com/FellowshipOfThePing/Drone-Control-Panel/blob/master/images/Drone_Control_UI.png)
+![UI_View](https://github.com/FellowshipOfThePing/Drone-Control-Panel/blob/master/images/example.gif)
 
+
+#### Note: Due to an error with hardware calibration, the drone had to be held for liftoff in this video ####
 
 
 Building off of the following repositories (with slight modifications):
