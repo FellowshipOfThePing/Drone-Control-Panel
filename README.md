@@ -11,6 +11,8 @@ A browser-based control panel application for the Parrot AR Drone 2.0.
 #### Note: Due to an error with hardware calibration, the drone had to be held for liftoff in this video ####
 
 
+### Resources ###
+
 Building off of the following repositories (with slight modifications):
  * [node-ar-drone](https://github.com/felixge/node-ar-drone)
  * [dronestream](https://github.com/bkw/node-dronestream)
